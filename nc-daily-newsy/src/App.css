@@ -1,0 +1,29 @@
+.App {
+  display: grid;
+  grid-template-rows: 50px, 100px, 1fr, 50px;
+  grid-template-areas: "title" "navbar" "main" "footer";
+}
+
+.Title {
+  grid-area: title;
+  background-color: salmon;
+  text-align: center;
+}
+
+.NavBar {
+  grid-area: navbar;
+  background-color: cadetblue;
+  text-align: right;
+}
+
+.Main {
+  grid-area: main;
+  background-color: yellow;
+  text-align: center;
+}
+
+.Footer {
+  grid-area: footer;
+  background-color: skyblue;
+  text-align: center;
+}
