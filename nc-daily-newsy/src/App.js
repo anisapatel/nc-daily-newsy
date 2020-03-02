@@ -4,6 +4,9 @@ import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import ArticleList from "./components/ArticleList";
+import { Router } from "@reach/router";
+import SingleArticle from "./components/SingleArticle";
+import ArticleComments from "./components/ArticleComments";
 
 class App extends Component {
   render() {
@@ -11,7 +14,12 @@ class App extends Component {
       <div>
         <Title />
         <NavBar />
-        <ArticleList />
+        <Router primary={false}>
+          <ArticleList path="/" />
+          <ArticleList path="/topics/:topic_slug" />
+          <SingleArticle path="/articles/:article_id" />
+          <ArticleComments path="/articles/:article_id/comments" />
+        </Router>
         <Footer />
       </div>
     );
