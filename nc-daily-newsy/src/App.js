@@ -9,6 +9,12 @@ import SingleArticle from "./components/SingleArticle";
 import ArticleComments from "./components/ArticleComments";
 
 class App extends Component {
+  state = {
+    userInfo: {
+      user: "tickle122",
+      avatar: "https://image.flaticon.com/icons/png/512/17/17004.png"
+    }
+  };
   render() {
     return (
       <div>
@@ -17,7 +23,10 @@ class App extends Component {
         <Router primary={false}>
           <ArticleList path="/" />
           <ArticleList path="/topics/:topic_slug" />
-          <SingleArticle path="/articles/:article_id" />
+          <SingleArticle
+            path="/articles/:article_id"
+            userInfo={this.state.userInfo.user}
+          />
           <ArticleComments path="/articles/:article_id/comments" />
         </Router>
         <Footer />

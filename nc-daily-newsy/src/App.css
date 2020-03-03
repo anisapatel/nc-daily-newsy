@@ -24,12 +24,35 @@
   border: 4px solid purple;
   text-align: center;
 }
-.singleArticle {
-  margin: 10px;
-}
-
 .Footer {
   grid-area: footer;
   border: 4px solid green;
   text-align: center;
+}
+.singleArticle {
+  margin: 10px;
+  border: 4px solid grey;
+}
+
+.Comments {
+  margin: 10px;
+  border: 4px solid blue;
+}
+
+.Article {
+  margin: 10px;
+  border: 4px solid palevioletred;
+}
+
+.Input {
+  font-size: large;
+  height: 30px;
+}
+
+.button {
+  font-size: large;
+}
+
+.commentDelete {
+  margin: 10px;
 }

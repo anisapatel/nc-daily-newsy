@@ -1,12 +1,12 @@
 import React from "react";
 
-const CommentCard = props => {
+const CommentCard = ({ comment: { author, votes, created_at, body } }) => {
   return (
-    <section>
-      <h3>Author: {props.comment.author}</h3>
-      <p>Votes: {props.comment.votes}</p>
-      <p>Date: {props.comment.created_at}</p>
-      <p>{props.comment.body}</p>
+    <section className="Comments">
+      <h3>Author: {author}</h3>
+      <p>Votes: {votes}</p>
+      <p>Date: {created_at}</p>
+      <p>{body}</p>
     </section>
   );
 };

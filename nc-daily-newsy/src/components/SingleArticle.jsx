@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import ArticleComments from "./ArticleComments";
-import { Link } from "@reach/router";
 
 class SingleArticle extends Component {
   state = {
@@ -27,7 +26,10 @@ class SingleArticle extends Component {
           <p>Author: {article.author}</p>
           <p>Date: {article.created_at}</p>
         </section>
-        <ArticleComments article_id={this.props.article_id} />
+        <ArticleComments
+          article_id={this.props.article_id}
+          userInfo={this.props.userInfo}
+        />
       </>
     );
   }

@@ -20,10 +20,9 @@ class ArticleList extends Component {
     }
   }
 
-  handleChange = ({ target: { value } }) => {
-    console.log(value);
+  handleChange = ({ target: { value, id } }) => {
     this.setState(currentState => {
-      return { ...currentState, sort_by: value };
+      return { ...currentState, [id]: value };
     });
   };
 
@@ -49,7 +48,7 @@ class ArticleList extends Component {
         <form onSubmit={this.handleSubmit} defaultValue="">
           <label>
             Sort by:
-            <select onChange={this.handleChange}>
+            <select onChange={this.handleChange} id="sort_by">
               <option value="created_at">Date</option>
               <option value="comment_count">Comments</option>
               <option value="votes">Votes</option>

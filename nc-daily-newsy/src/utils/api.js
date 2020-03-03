@@ -38,3 +38,20 @@ export const getArticleComments = article_id => {
       return data.comment;
     });
 };
+
+export const postCommentById = (article_id, comment) => {
+  return axios
+    .post(
+      `https://daily-newsy.herokuapp.com/api/articles/${article_id}/comments`,
+      comment
+    )
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
+export const deleteCommentById = comment_id => {
+  return axios.delete(
+    `https://daily-newsy.herokuapp.com/api/comments/${comment_id}`
+  );
+};
