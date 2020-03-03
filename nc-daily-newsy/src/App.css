@@ -56,3 +56,14 @@
 .commentDelete {
   margin: 10px;
 }
+
+.img {
+  max-width: 75px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.sign {
+  display: flex;
+  flex-direction: row;
+}

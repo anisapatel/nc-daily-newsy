@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Voter from "./Voter";
 
 const ArticleCard = ({
   article: {
@@ -22,6 +23,7 @@ const ArticleCard = ({
       <p>Votes: {votes}</p>
       <p>Author: {author}</p>
       <p>Comments: {comment_count}</p>
+      <Voter id={article_id} votes={votes} type={"articles"} />
     </article>
   );
 };

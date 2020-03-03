@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import ArticleComments from "./ArticleComments";
+import Voter from "./Voter";
 
 class SingleArticle extends Component {
   state = {
@@ -25,7 +26,13 @@ class SingleArticle extends Component {
           <p>Topic: {article.topic}</p>
           <p>Author: {article.author}</p>
           <p>Date: {article.created_at}</p>
+          <Voter
+            id={this.props.article_id}
+            votes={article.votes}
+            type={"articles"}
+          />
         </section>
+
         <ArticleComments
           article_id={this.props.article_id}
           userInfo={this.props.userInfo}

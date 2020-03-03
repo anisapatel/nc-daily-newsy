@@ -5,6 +5,7 @@ import CommentCard from "./CommentCard";
 
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
+import Voter from "./Voter";
 
 class ArticleComments extends Component {
   state = {
@@ -46,6 +47,11 @@ class ArticleComments extends Component {
           return (
             <div key={comment.comment_id}>
               <CommentCard comment={comment} />
+              <Voter
+                votes={comment.votes}
+                id={comment.comment_id}
+                type={"comments"}
+              />
               <CommentDeleter
                 comment_id={comment.comment_id}
                 removeComment={this.removeComment}
