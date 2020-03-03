@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ArticleCard = ({
   article: {
@@ -22,7 +24,12 @@ const ArticleCard = ({
       <p>Date: {created_at}</p>
       <p>Votes: {votes}</p>
       <p>Author: {author}</p>
-      <p>Comments: {comment_count}</p>
+      <div className="commentLink">
+        <Link to={`/articles/${article_id}/comments`}>
+          <FontAwesomeIcon icon={faCommentAlt} />
+          <p>{comment_count} Comments</p>
+        </Link>
+      </div>
       <Voter id={article_id} votes={votes} type={"articles"} />
     </article>
   );

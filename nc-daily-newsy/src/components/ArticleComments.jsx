@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import CommentCard from "./CommentCard";
-
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
 import Voter from "./Voter";
@@ -19,7 +18,10 @@ class ArticleComments extends Component {
 
   insertComment = comment => {
     this.setState(currentState => {
-      return { comments: [comment, ...currentState.comments] };
+      return {
+        comments: [comment, ...currentState.comments],
+        isLoading: false
+      };
     });
   };
 

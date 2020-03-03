@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import ArticleComments from "./ArticleComments";
 import Voter from "./Voter";
+import Loader from "./Loader";
 
 class SingleArticle extends Component {
   state = {
@@ -16,7 +17,8 @@ class SingleArticle extends Component {
   }
 
   render() {
-    const { article } = this.state;
+    const { article, isLoading } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <>
         <section className="singleArticle">

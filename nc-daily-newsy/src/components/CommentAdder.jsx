@@ -4,7 +4,8 @@ import * as api from "../utils/api";
 class CommentAdder extends Component {
   state = {
     username: "tickle122",
-    body: ""
+    body: "",
+    isLoading: true
   };
 
   handleChange = ({ target: { value, id } }) => {
@@ -23,15 +24,16 @@ class CommentAdder extends Component {
   render() {
     return (
       <section>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form">
           <label>
-            Comment as tickle122:
+            Comment as {this.state.username}:
             <input
               className="Input"
               type="text"
               placeholder="What are your thoughts?"
               id="body"
               onChange={this.handleChange}
+              required
             ></input>
           </label>
           <button className="button">Comment</button>
