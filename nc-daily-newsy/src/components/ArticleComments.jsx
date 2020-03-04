@@ -5,6 +5,7 @@ import CommentCard from "./CommentCard";
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
 import Voter from "./Voter";
+import ViewToggler from "./ViewToggler";
 
 class ArticleComments extends Component {
   state = {
@@ -45,24 +46,26 @@ class ArticleComments extends Component {
           insertComment={this.insertComment}
         />
 
-        {comments.map(comment => {
-          return (
-            <div key={comment.comment_id}>
-              <CommentCard comment={comment} />
-              <Voter
-                votes={comment.votes}
-                id={comment.comment_id}
-                type={"comments"}
-              />
-              <CommentDeleter
-                comment_id={comment.comment_id}
-                removeComment={this.removeComment}
-                author={comment.author}
-                userInfo={this.props.userInfo}
-              />
-            </div>
-          );
-        })}
+        <ViewToggler>
+          {comments.map(comment => {
+            return (
+              <div key={comment.comment_id}>
+                <CommentCard comment={comment} />
+                <Voter
+                  votes={comment.votes}
+                  id={comment.comment_id}
+                  type={"comments"}
+                />
+                <CommentDeleter
+                  comment_id={comment.comment_id}
+                  removeComment={this.removeComment}
+                  author={comment.author}
+                  userInfo={this.props.userInfo}
+                />
+              </div>
+            );
+          })}
+        </ViewToggler>
       </section>
     );
   }

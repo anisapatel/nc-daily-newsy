@@ -1,4 +1,5 @@
 import React from "react";
+import ViewToggler from "./ViewToggler";
 
 const CommentCard = ({ comment: { author, votes, created_at, body } }) => {
   return (
