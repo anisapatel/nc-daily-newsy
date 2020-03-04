@@ -2,10 +2,22 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import { Link } from "@reach/router";
 
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavLink
+} from "reactstrap";
+
 class NavBar extends Component {
   state = {
     topics: [],
-    isLoading: true
+    isLoading: true,
+    isOpen: false,
+    navCollapsed: true,
+    showNavbar: false
   };
 
   componentDidMount() {
@@ -14,21 +26,36 @@ class NavBar extends Component {
     });
   }
 
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   render() {
     const { topics } = this.state;
     return (
-      <nav className="NavBar">
-        <Link to="/">
-          <button className="button">Home</button>
-        </Link>
-        {topics.map(topic => {
-          return (
-            <Link key={topic.slug} to={`/topics/${topic.slug}`}>
-              <button className="button">{topic.slug}</button>
-            </Link>
-          );
-        })}
-      </nav>
+      <>
+        <nav>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">
+              <i className="fa fa-fw fa-home"></i>Home
+            </NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                {topics.map(topic => {
+                  return (
+                    <NavLink key={topic.slug} href={`/topics/${topic.slug}`}>
+                      {topic.slug.toUpperCase()}
+                    </NavLink>
+                  );
+                })}
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </nav>
+      </>
     );
   }
 }

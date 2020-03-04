@@ -3,7 +3,8 @@ body {
   font-family: normal x-small verdana, arial, helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #dae0e6;
+  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(2, 181, 175); */
 }
 
 code {

@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
+import ErrorPage from "./ErrorPage";
 
 class ArticleList extends Component {
   state = {
     articles: [],
     isLoading: true,
-    sort_by: undefined
+    sort_by: undefined,
+    err: null
   };
 
   componentDidMount() {
@@ -31,6 +33,12 @@ class ArticleList extends Component {
       .getArticles(this.props.topic_slug, this.state.sort_by)
       .then(articles => {
         this.setState({ articles, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: { status: response.status, msg: response.data.msg }
+        });
       });
   };
 
@@ -40,8 +48,9 @@ class ArticleList extends Component {
   };
 
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, err } = this.state;
     if (isLoading) return <Loader />;
+    if (err) return <ErrorPage {...err} />;
 
     return (
       <main className="Main">

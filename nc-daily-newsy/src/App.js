@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -27,7 +28,10 @@ class App extends Component {
             path="/articles/:article_id"
             userInfo={this.state.userInfo.user}
           />
-          <ArticleComments path="/articles/:article_id/comments" />
+          <ArticleComments
+            path="/articles/:article_id/comments"
+            userInfo={this.state.userInfo.user}
+          />
         </Router>
         <Footer />
       </div>

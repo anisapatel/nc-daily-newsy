@@ -14,30 +14,41 @@ class Voter extends Component {
       return { optimisticVotes: currentState.optimisticVotes + vote };
     });
   };
+  // <i class="far fa-thumbs-up"></i>
 
   render() {
     return (
       <div className="Voter">
-        <FontAwesomeIcon
-          color="#0366ad"
-          size="2x"
-          icon={faThumbsUp}
+        <button
+          className="voteButton"
           onClick={({}) => {
             this.handleClick(1);
           }}
           disabled={this.state.optimisticVotes === 1}
-        />
-
+        >
+          <FontAwesomeIcon
+            color="rgb(2, 181, 175)"
+            size="2x"
+            icon={faThumbsUp}
+          />
+          <span> Like</span>
+          <p></p>
+        </button>
         <p>{this.props.votes + this.state.optimisticVotes}</p>
-        <FontAwesomeIcon
-          color="#0366ad"
-          size="2x"
-          icon={faThumbsDown}
+        <button
+          className="voteButton"
           onClick={({}) => {
             this.handleClick(-1);
           }}
           disabled={this.state.optimisticVotes === -1}
-        />
+        >
+          <FontAwesomeIcon
+            color="rgb(2, 181, 175)"
+            size="2x"
+            icon={faThumbsDown}
+          />
+          <span> Dislike</span>
+        </button>
       </div>
     );
   }

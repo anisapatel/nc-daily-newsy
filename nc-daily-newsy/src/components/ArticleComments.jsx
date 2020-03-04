@@ -6,11 +6,13 @@ import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
 import Voter from "./Voter";
 import ViewToggler from "./ViewToggler";
+import ErrorPage from "./ErrorPage";
 
 class ArticleComments extends Component {
   state = {
     comments: [],
-    isLoading: true
+    isLoading: true,
+    err: null
   };
 
   componentDidMount() {
@@ -31,16 +33,31 @@ class ArticleComments extends Component {
   };
 
   fetchArticleComments = () => {
-    api.getArticleComments(this.props.article_id).then(comments => {
-      this.setState({ comments, isLoading: false });
-    });
+    api
+      .getArticleComments(this.props.article_id)
+      .then(comments => {
+        this.setState({ comments, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: { status: response.status, msg: response.data.msg }
+        });
+      });
   };
 
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, err } = this.state;
     if (isLoading) return <Loader />;
+
+    if (err) return <ErrorPage {...err} />;
     return (
       <section>
+        {!comments.length && (
+          <p>
+            There are currently no comments for this article. Add a comment...
+          </p>
+        )}
         <CommentAdder
           article_id={this.props.article_id}
           insertComment={this.insertComment}

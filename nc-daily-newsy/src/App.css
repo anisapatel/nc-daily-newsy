@@ -7,13 +7,49 @@
 .Title {
   grid-area: title;
   text-align: center;
-  border: 4px solid red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* border: 4px solid red; */
+}
+
+h1 {
+  /* width: 100%;
+  height: 200px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+header {
+  background-color: rgb(2, 181, 175);
+  /* margin-right: 50px;
+  margin-left: 50px; */
 }
 
 .NavBar {
   grid-area: navbar;
-  border: 4px solid yellow;
+  /* border: 4px solid yellow; */
   text-align: left;
+  width: 100%;
+}
+
+.voteButton {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.voteButton:hover {
+  /* background-color: white; */
+  border-radius: 4px;
+}
+
+.voteButton:active {
+  /* background-color: #3e8e41; */
+  box-shadow: 0 5px #666;
+  transform: translateY(5px);
 }
 
 .button {
@@ -21,18 +57,21 @@
 }
 .Main {
   grid-area: main;
-  border: 4px solid purple;
+  /* border: 4px solid purple; */
   text-align: center;
 }
 .Footer {
   grid-area: footer;
-  border: 4px solid green;
+  /* border: 4px solid green; */
+  background-color: rgb(2, 181, 175);
   text-align: center;
 }
 .singleArticle {
   margin: 10px;
   padding: 5px;
   border: 4px solid grey;
+  font-family: sans-serif Cursive;
+  text-align: center;
 }
 
 .Comments {
@@ -42,8 +81,14 @@
 }
 
 .Article {
-  margin: 10px;
-  border: 4px solid palevioletred;
+  /* margin: 20px; */
+  /* max-width: 50%; */
+  /* border: 4px solid palevioletred; */
+  /* background-color: #dae0e6; */
+  background-color: #e3e5e8;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
 }
 
 .Input {

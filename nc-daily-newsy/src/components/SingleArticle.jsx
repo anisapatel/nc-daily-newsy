@@ -3,22 +3,33 @@ import * as api from "../utils/api";
 import ArticleComments from "./ArticleComments";
 import Voter from "./Voter";
 import Loader from "./Loader";
+import ErrorPage from "./ErrorPage";
 
 class SingleArticle extends Component {
   state = {
     article: {},
-    isLoading: true
+    isLoading: true,
+    err: null
   };
 
   componentDidMount() {
-    api.getArticleById(this.props.article_id).then(article => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .getArticleById(this.props.article_id)
+      .then(article => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: { status: response.status, msg: response.data.msg }
+        });
+      });
   }
 
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, err } = this.state;
     if (isLoading) return <Loader />;
+    if (err) return <ErrorPage {...err} />;
     return (
       <>
         <section className="singleArticle">
