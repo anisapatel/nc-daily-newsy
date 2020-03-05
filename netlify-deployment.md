@@ -34,6 +34,8 @@ Take a look inside - but don't change anything.
 
 `netlify deploy`
 
+netlify deploy --dir=build
+
 - Authorise Netlify with GitHub, following the prompts in the browser.
 - Select `Create & configure a new site`.
 - Provide your choice of site name.

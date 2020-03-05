@@ -6,7 +6,7 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 class Voter extends Component {
   state = {
     optimisticVotes: 0,
-    err: null
+    err: false
   };
 
   handleClick = vote => {
@@ -25,7 +25,8 @@ class Voter extends Component {
         {this.state.err && <p>Unable to vote!</p>}
         <div className="Voter">
           <button
-            className="voteButton"
+            // className="voteButton"
+            className="Like"
             onClick={() => {
               this.handleClick(1);
             }}
@@ -39,9 +40,12 @@ class Voter extends Component {
             <span>{""} Like</span>
           </button>
 
-          <p>{this.props.votes + this.state.optimisticVotes}</p>
+          <p className="likeVotes">
+            {this.props.votes + this.state.optimisticVotes}
+          </p>
           <button
-            className="voteButton"
+            // className="voteButton"
+            className="disLike"
             onClick={() => {
               this.handleClick(-1);
             }}
@@ -52,7 +56,7 @@ class Voter extends Component {
               size="2x"
               icon={faThumbsDown}
             />
-            <span> Dislike</span>
+            <span className="pLike">{""} Dislike</span>
           </button>
         </div>
       </div>

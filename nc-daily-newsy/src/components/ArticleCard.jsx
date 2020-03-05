@@ -19,7 +19,7 @@ const ArticleCard = ({
   const formattedDate = utils.formatDate(created_at);
 
   return (
-    <div>
+    <div className="articleWrapper">
       <article className="Article">
         <p className="articleInfo">
           r/{topic} · Posted by u/{author} on {formattedDate[0]} at{" "}

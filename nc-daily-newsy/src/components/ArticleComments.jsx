@@ -72,7 +72,7 @@ class ArticleComments extends Component {
           <div>
             {comments.map(comment => {
               return (
-                <div key={comment.comment_id}>
+                <div key={comment.comment_id} className="commentArticle">
                   <CommentCard comment={comment} />
                   <Voter
                     votes={comment.votes}

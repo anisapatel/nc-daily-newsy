@@ -44,11 +44,13 @@ class SingleArticle extends Component {
             r/{article.topic} · Posted by u/{article.author} on{" "}
             {formattedDate[0]} at {formattedDate[1]}
           </p>
-          <Voter
-            id={this.props.article_id}
-            votes={article.votes}
-            type={"articles"}
-          />
+          <div className="singleVote">
+            <Voter
+              id={this.props.article_id}
+              votes={article.votes}
+              type={"articles"}
+            />
+          </div>
         </section>
 
         <ArticleComments
