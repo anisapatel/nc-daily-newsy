@@ -56,7 +56,7 @@ header {
 .voteButton {
   font-size: 100%;
   font-family: inherit;
-  border: 0;
+  border: 1px solid green;
   padding: 0;
   background-color: transparent;
 }
@@ -138,6 +138,7 @@ header {
 .sign {
   display: flex;
   flex-direction: row;
+  margin: 15px;
 }
 
 .form {

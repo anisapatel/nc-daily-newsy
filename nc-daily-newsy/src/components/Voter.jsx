@@ -36,8 +36,8 @@ class Voter extends Component {
               size="2x"
               icon={faThumbsUp}
             />
+            <span>{""} Like</span>
           </button>
-          <span>{""} Like</span>
 
           <p>{this.props.votes + this.state.optimisticVotes}</p>
           <button
@@ -52,8 +52,8 @@ class Voter extends Component {
               size="2x"
               icon={faThumbsDown}
             />
+            <span> Dislike</span>
           </button>
-          <span> Dislike</span>
         </div>
       </div>
     );
