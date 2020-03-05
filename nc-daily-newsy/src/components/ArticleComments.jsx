@@ -12,7 +12,8 @@ class ArticleComments extends Component {
   state = {
     comments: [],
     isLoading: true,
-    err: null
+    err: null,
+    isVisible: false
   };
 
   componentDidMount() {
@@ -23,7 +24,8 @@ class ArticleComments extends Component {
     this.setState(currentState => {
       return {
         comments: [comment, ...currentState.comments],
-        isLoading: false
+        isLoading: false,
+        isVisible: !currentState.isVisible
       };
     });
   };
@@ -47,14 +49,14 @@ class ArticleComments extends Component {
   };
 
   render() {
-    const { comments, isLoading, err } = this.state;
+    const { comments, isLoading, err, isVisible } = this.state;
     if (isLoading) return <Loader />;
 
     if (err) return <ErrorPage {...err} />;
     return (
       <section>
         {!comments.length && (
-          <p>
+          <p className="p">
             There are currently no comments for this article. Add a comment...
           </p>
         )}
@@ -62,26 +64,31 @@ class ArticleComments extends Component {
           article_id={this.props.article_id}
           insertComment={this.insertComment}
         />
+        {isVisible && (
+          <p className="p">Hold tight! Your comment is being posted...</p>
+        )}
 
         <ViewToggler>
-          {comments.map(comment => {
-            return (
-              <div key={comment.comment_id}>
-                <CommentCard comment={comment} />
-                <Voter
-                  votes={comment.votes}
-                  id={comment.comment_id}
-                  type={"comments"}
-                />
-                <CommentDeleter
-                  comment_id={comment.comment_id}
-                  removeComment={this.removeComment}
-                  author={comment.author}
-                  userInfo={this.props.userInfo}
-                />
-              </div>
-            );
-          })}
+          <div>
+            {comments.map(comment => {
+              return (
+                <div key={comment.comment_id}>
+                  <CommentCard comment={comment} />
+                  <Voter
+                    votes={comment.votes}
+                    id={comment.comment_id}
+                    type={"comments"}
+                  />
+                  <CommentDeleter
+                    comment_id={comment.comment_id}
+                    removeComment={this.removeComment}
+                    author={comment.author}
+                    userInfo={this.props.userInfo}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </ViewToggler>
       </section>
     );

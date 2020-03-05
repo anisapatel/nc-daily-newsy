@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: normal x-small verdana, arial, helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: verdana, arial, helvetica, sans-serif;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
   background-color: rgb(255, 255, 255);
   /* background-color: rgb(2, 181, 175); */
 }

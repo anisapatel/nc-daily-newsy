@@ -54,7 +54,7 @@ class ArticleList extends Component {
 
     return (
       <main className="Main">
-        <form onSubmit={this.handleSubmit} defaultValue="">
+        <form onSubmit={this.handleSubmit} defaultValue="" className="sort_by">
           <label>
             Sort by:
             <select onChange={this.handleChange} id="sort_by">
@@ -63,7 +63,7 @@ class ArticleList extends Component {
               <option value="votes">Votes</option>
             </select>
           </label>
-          <button>Submit</button>
+          <button className="submitButton">Submit</button>
         </form>
         {articles.map(article => {
           return <ArticleCard key={article.article_id} article={article} />;

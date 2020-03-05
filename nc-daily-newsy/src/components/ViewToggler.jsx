@@ -14,8 +14,8 @@ class ViewToggler extends Component {
   render() {
     return (
       <section>
-        <button onClick={this.handleClick}>
-          {this.state.isVisible ? "Hide comments" : "View comments"}
+        <button className="viewToggler" onClick={this.handleClick}>
+          {this.state.isVisible ? "Hide comments" : "See comments"}
         </button>
         {this.state.isVisible && this.props.children}
       </section>

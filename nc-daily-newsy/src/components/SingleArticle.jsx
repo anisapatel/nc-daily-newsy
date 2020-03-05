@@ -4,19 +4,22 @@ import ArticleComments from "./ArticleComments";
 import Voter from "./Voter";
 import Loader from "./Loader";
 import ErrorPage from "./ErrorPage";
+import * as utils from "../utils/utils";
 
 class SingleArticle extends Component {
   state = {
     article: {},
     isLoading: true,
-    err: null
+    err: null,
+    formattedDate: ""
   };
 
   componentDidMount() {
     api
       .getArticleById(this.props.article_id)
       .then(article => {
-        this.setState({ article, isLoading: false });
+        const formattedDate = utils.formatDate(article.created_at);
+        this.setState({ article, isLoading: false, formattedDate });
       })
       .catch(({ response }) => {
         this.setState({
@@ -27,18 +30,20 @@ class SingleArticle extends Component {
   }
 
   render() {
-    const { article, isLoading, err } = this.state;
+    const { article, isLoading, err, formattedDate } = this.state;
+
     if (isLoading) return <Loader />;
     if (err) return <ErrorPage {...err} />;
     return (
       <>
         <section className="singleArticle">
-          <h3>{article.title}</h3>
+          <h5>{article.title}</h5>
           <p>{article.body}</p>
-          <p>Votes: {article.votes}</p>
-          <p>Topic: {article.topic}</p>
-          <p>Author: {article.author}</p>
-          <p>Date: {article.created_at}</p>
+
+          <p>
+            r/{article.topic} · Posted by u/{article.author} on{" "}
+            {formattedDate[0]} at {formattedDate[1]}
+          </p>
           <Voter
             id={this.props.article_id}
             votes={article.votes}

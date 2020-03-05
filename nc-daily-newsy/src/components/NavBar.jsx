@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import { Link } from "@reach/router";
 
 import {
   Collapse,
@@ -35,27 +34,29 @@ class NavBar extends Component {
   render() {
     const { topics } = this.state;
     return (
-      <>
-        <nav>
-          <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">
-              <i className="fa fa-fw fa-home"></i>Home
-            </NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
-                {topics.map(topic => {
-                  return (
-                    <NavLink key={topic.slug} href={`/topics/${topic.slug}`}>
-                      {topic.slug.toUpperCase()}
-                    </NavLink>
-                  );
-                })}
-              </Nav>
-            </Collapse>
-          </Navbar>
-        </nav>
-      </>
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">
+            <i className="fa fa-fw fa-home"></i>Home
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              {topics.map(topic => {
+                return (
+                  <NavLink
+                    // className="Link"
+                    key={topic.slug}
+                    href={`/topics/${topic.slug}`}
+                  >
+                    {topic.slug}
+                  </NavLink>
+                );
+              })}
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }

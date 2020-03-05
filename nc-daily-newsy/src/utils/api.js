@@ -57,8 +57,8 @@ export const deleteCommentById = comment_id => {
 };
 
 export const patchVoteById = (id, inc_votes, type) => {
-  return axios.patch(
-    `https://daily-newsy.herokuapp.com/api/${type}/${id}`,
+  console.log("api file");
+  return axios.patch(`https://daily-newsy.herokuapp.com/api/${type}/${id}`, {
     inc_votes
-  );
+  });
 };

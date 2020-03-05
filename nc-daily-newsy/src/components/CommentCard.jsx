@@ -1,11 +1,13 @@
 import React from "react";
+import * as utils from "../utils/utils";
 
 const CommentCard = ({ comment: { author, votes, created_at, body } }) => {
+  const formattedDate = utils.formatDate(created_at);
   return (
     <section className="Comments">
-      <h3>Author: {author}</h3>
-      <p>Votes: {votes}</p>
-      <p>Date: {created_at}</p>
+      <p className="commentP">
+        Posted by u/{author} on {formattedDate[0]} at {formattedDate[1]}
+      </p>
       <p>{body}</p>
     </section>
   );

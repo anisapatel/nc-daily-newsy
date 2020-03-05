@@ -24,19 +24,21 @@ class CommentAdder extends Component {
   render() {
     return (
       <section>
-        <form onSubmit={this.handleSubmit} className="form">
-          <label>
+        <form onSubmit={this.handleSubmit}>
+          <label className="form">
             Comment as {this.state.username}:
-            <input
+            <textarea
+              rows="4"
+              cols="50"
               className="Input"
               type="text"
               placeholder="What are your thoughts?"
               id="body"
               onChange={this.handleChange}
               required
-            ></input>
+            ></textarea>
           </label>
-          <button className="button">Comment</button>
+          <button className="commentButton">Comment</button>
         </form>
       </section>
     );

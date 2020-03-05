@@ -12,8 +12,10 @@ const CommentDeleter = ({ userInfo, author, comment_id, removeComment }) => {
   };
 
   return (
-    <div className="commentDelete">
-      <button onClick={handleClick}>Delete</button>
+    <div>
+      <button className="commentDelete" onClick={handleClick}>
+        Delete
+      </button>
     </div>
   );
 };
