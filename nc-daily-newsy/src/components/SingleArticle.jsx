@@ -5,6 +5,7 @@ import Voter from "./Voter";
 import Loader from "./Loader";
 import ErrorPage from "./ErrorPage";
 import * as utils from "../utils/utils";
+import ViewToggler from "./ViewToggler";
 
 class SingleArticle extends Component {
   state = {
@@ -31,7 +32,6 @@ class SingleArticle extends Component {
 
   render() {
     const { article, isLoading, err, formattedDate } = this.state;
-
     if (isLoading) return <Loader />;
     if (err) return <ErrorPage {...err} />;
     return (
@@ -53,10 +53,12 @@ class SingleArticle extends Component {
           </div>
         </section>
 
-        <ArticleComments
-          article_id={this.props.article_id}
-          userInfo={this.props.userInfo}
-        />
+        <ViewToggler>
+          <ArticleComments
+            article_id={this.props.article_id}
+            userInfo={this.props.userInfo}
+          />
+        </ViewToggler>
       </>
     );
   }

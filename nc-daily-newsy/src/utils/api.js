@@ -1,16 +1,15 @@
-const axios = require("axios");
+import axios from "axios";
+const baseURL = "https://daily-newsy.herokuapp.com/api/";
 
 export const getTopics = () => {
-  return axios
-    .get("https://daily-newsy.herokuapp.com/api/topics")
-    .then(({ data }) => {
-      return data.topics;
-    });
+  return axios.get(`${baseURL}topics`).then(({ data }) => {
+    return data.topics;
+  });
 };
 
 export const getArticles = (topic, sort_by) => {
   return axios
-    .get(`https://daily-newsy.herokuapp.com/api/articles`, {
+    .get(`${baseURL}articles`, {
       params: {
         topic,
         sort_by
@@ -22,18 +21,14 @@ export const getArticles = (topic, sort_by) => {
 };
 
 export const getArticleById = article_id => {
-  return axios
-    .get(`https://daily-newsy.herokuapp.com/api/articles/${article_id}`)
-    .then(({ data }) => {
-      return data.article[0];
-    });
+  return axios.get(`${baseURL}articles/${article_id}`).then(({ data }) => {
+    return data.article[0];
+  });
 };
 
 export const getArticleComments = article_id => {
   return axios
-    .get(
-      `https://daily-newsy.herokuapp.com/api/articles/${article_id}/comments`
-    )
+    .get(`${baseURL}articles/${article_id}/comments`)
     .then(({ data }) => {
       return data.comment;
     });
@@ -41,24 +36,18 @@ export const getArticleComments = article_id => {
 
 export const postCommentById = (article_id, comment) => {
   return axios
-    .post(
-      `https://daily-newsy.herokuapp.com/api/articles/${article_id}/comments`,
-      comment
-    )
+    .post(`${baseURL}articles/${article_id}/comments`, comment)
     .then(({ data }) => {
       return data.comment;
     });
 };
 
 export const deleteCommentById = comment_id => {
-  return axios.delete(
-    `https://daily-newsy.herokuapp.com/api/comments/${comment_id}`
-  );
+  return axios.delete(`${baseURL}comments/${comment_id}`);
 };
 
 export const patchVoteById = (id, inc_votes, type) => {
-  console.log("api file");
-  return axios.patch(`https://daily-newsy.herokuapp.com/api/${type}/${id}`, {
+  return axios.patch(`${baseURL}${type}/${id}`, {
     inc_votes
   });
 };

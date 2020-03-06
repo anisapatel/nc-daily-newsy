@@ -44,11 +44,7 @@ class NavBar extends Component {
             <Nav className="ml-auto" navbar>
               {topics.map(topic => {
                 return (
-                  <NavLink
-                    // className="Link"
-                    key={topic.slug}
-                    href={`/topics/${topic.slug}`}
-                  >
+                  <NavLink key={topic.slug} href={`/topics/${topic.slug}`}>
                     {topic.slug}
                   </NavLink>
                 );

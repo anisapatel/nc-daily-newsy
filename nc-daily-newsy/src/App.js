@@ -8,6 +8,7 @@ import ArticleList from "./components/ArticleList";
 import { Router } from "@reach/router";
 import SingleArticle from "./components/SingleArticle";
 import ArticleComments from "./components/ArticleComments";
+import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
   state = {
@@ -17,21 +18,23 @@ class App extends Component {
     }
   };
   render() {
+    const { userInfo } = this.state;
     return (
       <div>
-        <Title userInfo={this.state.userInfo} />
+        <Title userInfo={userInfo} />
         <NavBar />
         <Router primary={false}>
           <ArticleList path="/" />
           <ArticleList path="/topics/:topic_slug" />
           <SingleArticle
             path="/articles/:article_id"
-            userInfo={this.state.userInfo.user}
+            userInfo={userInfo.user}
           />
           <ArticleComments
             path="/articles/:article_id/comments"
-            userInfo={this.state.userInfo.user}
+            userInfo={userInfo.user}
           />
+          <ErrorPage default />
         </Router>
         <Footer />
       </div>

@@ -19,25 +19,27 @@ const ArticleCard = ({
   const formattedDate = utils.formatDate(created_at);
 
   return (
-    <div className="articleWrapper">
-      <article className="Article">
-        <p className="articleInfo">
-          r/{topic} · Posted by u/{author} on {formattedDate[0]} at{" "}
-          {formattedDate[1]}
-        </p>
-        <Link to={`/articles/${article_id}`}>
-          <h4>{title}</h4>
-        </Link>
+    // <div className="articleWrapper">
+    <article className="Article">
+      <p className="articleInfo">
+        r/{topic} · Posted by u/{author} on {formattedDate[0]} at{" "}
+        {formattedDate[1]}
+      </p>
+      <Link to={`/articles/${article_id}`}>
+        <h4>{title}</h4>
+      </Link>
 
-        <div className="commentLink">
-          <Link to={`/articles/${article_id}/comments`}>
-            <FontAwesomeIcon icon={faCommentAlt}></FontAwesomeIcon>{" "}
-            <span>{comment_count} Comment(s)</span>
-          </Link>
-        </div>
+      <div className="commentLink">
+        <Link to={`/articles/${article_id}/comments`}>
+          <FontAwesomeIcon icon={faCommentAlt}></FontAwesomeIcon>{" "}
+          <span>{comment_count} Comment(s)</span>
+        </Link>
+      </div>
+      <div className="articleCardVoter">
         <Voter id={article_id} votes={votes} type={"articles"} />
-      </article>
-    </div>
+      </div>
+    </article>
+    // </div>
   );
 };
 

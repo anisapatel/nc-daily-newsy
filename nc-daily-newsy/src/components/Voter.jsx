@@ -10,7 +10,6 @@ class Voter extends Component {
   };
 
   handleClick = vote => {
-    console.log("clicked..");
     api.patchVoteById(this.props.id, vote, this.props.type).catch(() => {
       this.setState({ err: true });
     });

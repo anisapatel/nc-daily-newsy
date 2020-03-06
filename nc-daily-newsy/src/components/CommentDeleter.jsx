@@ -1,23 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import * as api from "../utils/api";
 
-const CommentDeleter = ({ userInfo, author, comment_id, removeComment }) => {
-  const handleClick = event => {
+class CommentDeleter extends Component {
+  state = {
+    isDeleting: false
+  };
+
+  handleClick = event => {
     event.preventDefault();
-    if (userInfo === author) {
-      api.deleteCommentById(comment_id).then(() => {
-        removeComment();
+    if (this.props.userInfo === this.props.author) {
+      this.setState({ isDeleting: true }, () => {
+        api.deleteCommentById(this.props.comment_id).then(() => {
+          this.props.removeComment();
+        });
       });
     }
   };
 
-  return (
-    <div>
-      <button className="commentDelete" onClick={handleClick}>
-        Delete
-      </button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <button
+          className="commentDelete"
+          onClick={this.handleClick}
+          disabled={this.state.isDeleting}
+        >
+          Delete
+        </button>
+        {this.state.isDeleting && (
+          <p>Hold tight! Your comment is being deleted...</p>
+        )}
+      </div>
+    );
+  }
+}
 
 export default CommentDeleter;

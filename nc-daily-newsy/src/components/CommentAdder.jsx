@@ -5,7 +5,8 @@ class CommentAdder extends Component {
   state = {
     username: "tickle122",
     body: "",
-    isLoading: true
+    isLoading: true,
+    isPosting: false
   };
 
   handleChange = ({ target: { value, id } }) => {
@@ -14,11 +15,14 @@ class CommentAdder extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    api
-      .postCommentById(this.props.article_id, { ...this.state })
-      .then(([comment]) => {
-        this.props.insertComment(comment);
-      });
+    this.setState({ isPosting: true }, () => {
+      api
+        .postCommentById(this.props.article_id, { ...this.state })
+        .then(([comment]) => {
+          this.props.insertComment(comment);
+          this.setState({ isPosting: false, body: "" });
+        });
+    });
   };
 
   render() {
@@ -36,10 +40,16 @@ class CommentAdder extends Component {
               id="body"
               onChange={this.handleChange}
               required
+              value={this.state.body}
             ></textarea>
           </label>
-          <button className="commentButton">Comment</button>
+          <button className="commentButton" disabled={this.state.isPosting}>
+            Comment
+          </button>
         </form>
+        {this.state.isPosting && (
+          <p className="p">Hold tight! Your comment is being posted...</p>
+        )}
       </section>
     );
   }
