@@ -36,7 +36,9 @@ class Voter extends Component {
               size="2x"
               icon={faThumbsUp}
             />
-            <span>{""} Like</span>
+            <div className="pLike">
+              <span>{""} Like</span>
+            </div>
           </button>
 
           <p className="likeVotes">
@@ -54,8 +56,11 @@ class Voter extends Component {
               color="rgb(2, 181, 175)"
               size="2x"
               icon={faThumbsDown}
+              className="dIcon"
             />
-            <span className="pLike">{""} Dislike</span>
+            <div className="p.disLike">
+              <span>{""} Dislike</span>
+            </div>
           </button>
         </div>
       </div>
