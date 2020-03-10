@@ -30,6 +30,38 @@
     padding-top: 2px;
     padding-bottom: 2px;
   }
+  .Article {
+    max-width: 65%;
+    margin: 20px auto !important;
+
+    background-color: #e3e5e8;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 60px;
+    grid-area: article;
+    display: grid;
+    grid-template-rows: 30% 20% 15% 30%;
+    grid-template-areas: "articleInfo" "h4" "commentLink" "articleCardVoter";
+  }
+
+  h4 {
+    text-decoration: none;
+    text-align: start;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .articleInfo {
+    text-align: start;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    text-decoration: none;
+    color: black;
+    margin: 10px 0px 10px 4px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -64,6 +96,11 @@
     margin-left: 105px !important;
     padding-top: 2px;
   }
+  .articleCardVoter {
+    background-color: transparent !important ;
+    margin-bottom: 15px;
+    margin-left: -18px;
+  }
 }
 @media (min-width: 375px) and (max-width: 420px) {
   /* smartphones, Android phones, landscape iPhone */
@@ -75,6 +112,11 @@
     font-size: 14px;
     margin-left: 120px !important;
     padding-top: 2px;
+  }
+  .articleCardVoter {
+    background-color: transparent !important ;
+    margin-bottom: 15px;
+    margin-left: -70px;
   }
 }
 
@@ -89,6 +131,25 @@
     margin-left: 133px !important;
     padding-top: 2px;
   }
+  .articleCardVoter {
+    background-color: transparent !important ;
+    margin-bottom: 15px;
+    margin-left: -16px;
+  }
+  .Article {
+    max-width: 60%;
+    margin: 20px auto !important;
+
+    background-color: #e3e5e8;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 60px;
+    grid-area: article;
+    display: grid;
+    grid-template-rows: 30% 20% 15% 30%;
+    grid-template-areas: "articleInfo" "h4" "commentLink" "articleCardVoter";
+  }
 }
 
 @media (min-width: 768px) {
@@ -101,6 +162,12 @@
     font-size: 14px;
     margin-left: 308px !important;
     padding-top: 2px;
+  }
+  .articleCardVoter {
+    background-color: transparent !important;
+    margin-bottom: -45px;
+    text-align: justify;
+    margin-left: 15px !important;
   }
 }
 
@@ -273,10 +340,9 @@ header {
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 10px;
-  padding-bottom: 60px;
   grid-area: article;
   display: grid;
-  grid-template-rows: 30% 20% 15% 30%;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas: "articleInfo" "h4" "commentLink" "articleCardVoter";
 }
 
@@ -337,11 +403,8 @@ header {
 .likeVotes {
   grid-area: likevotes;
   margin-top: 10px;
-  padding-right: 180px;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  padding-right: 120px;
+  margin-left: 15px;
 }
 
 .singleVote {
@@ -481,10 +544,7 @@ header {
 
 .articleCardVoter {
   background-color: lawngreen;
-  display: flex;
-  flex-direction: row-reverse;
-  margin-bottom: 40px;
-  padding-bottom: 5px;
+  padding: 10px;
 }
 
 p.disLike {
