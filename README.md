@@ -1,5 +1,7 @@
 # NC-Daily-Newsy
 
+https://nc-daily-newsy.netlify.com
+
 This URL allows access to the hosted version of the daily-newsy website.
 
 ## Getting Started
