@@ -45,7 +45,7 @@ Run the app. It will run on http://localhost:3000.
 
 https://daily-newsy.herokuapp.com/api
 
-This URL allows access to the hosted version of the backend. To view all the avaialable end points in JSON format, make a GET /api request.
+This URL allows access to the hosted version of the backend. To view all the available end points in JSON format, make a GET /api request.
 
 To view the backend repository for this project:
 
