@@ -45,7 +45,6 @@ class Voter extends Component {
             {this.props.votes + this.state.optimisticVotes}
           </p>
           <button
-            // className="voteButton"
             className="disLike"
             onClick={() => {
               this.handleClick(-1);

@@ -54,17 +54,27 @@ class ArticleList extends Component {
 
     return (
       <main className="Main">
-        <form onSubmit={this.handleSubmit} defaultValue="" className="sort_by">
-          <label>
-            Sort by:
-            <select onChange={this.handleChange} id="sort_by">
-              <option value="created_at">Date</option>
-              <option value="comment_count">Comments</option>
-              <option value="votes">Votes</option>
-            </select>
-          </label>
-          <button className="submitButton">Submit</button>
-        </form>
+        <div className="sortForm">
+          <form
+            onSubmit={this.handleSubmit}
+            defaultValue=""
+            className="sort_by"
+          >
+            <label>
+              Sort by:
+              <select
+                onChange={this.handleChange}
+                id="sort_by"
+                className="sortInput"
+              >
+                <option value="created_at">Date</option>
+                <option value="comment_count">Comments</option>
+                <option value="votes">Votes</option>
+              </select>
+            </label>
+            <button className="submitButton">Submit</button>
+          </form>
+        </div>
         {articles.map(article => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}

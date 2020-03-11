@@ -430,15 +430,17 @@ header {
 .sort_by {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-content: center;
   margin: 10px;
-  padding-inline-start: 40px;
+  /* padding-inline-start: 40px; */
   font-size: 18px;
 }
 
 .submitButton {
-  font-size: 18px;
+  font-size: 16px;
   /* display: inline; */
-  height: 27px;
+  height: 28px;
   border-radius: 4px;
   margin-left: 8px;
   border: 1px solid rgb(2, 181, 175);
@@ -458,9 +460,16 @@ header {
 }
 
 #sort_by {
-  width: 100px;
+  width: 125px;
   background-color: #fff;
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+#sortForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
 }
 
 .p {
@@ -549,4 +558,18 @@ header {
 
 p.disLike {
   margin-left: 10px;
+}
+
+.sweetLoading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+body {
+  background: #dedede;
+}
+.page-wrap {
+  min-height: 100vh;
 }
