@@ -6,14 +6,14 @@ class CommentAdder extends Component {
     username: "tickle122",
     body: "",
     isLoading: true,
-    isPosting: false
+    isPosting: false,
   };
 
   handleChange = ({ target: { value, id } }) => {
     this.setState({ [id]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ isPosting: true }, () => {
       api
@@ -28,9 +28,9 @@ class CommentAdder extends Component {
   render() {
     return (
       <section>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="formContainer">
           <label className="form">
-            Comment as {this.state.username}:
+            <p className="p">Comment as {this.state.username}:</p>
             <textarea
               rows="4"
               cols="50"
